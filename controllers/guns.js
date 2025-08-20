@@ -26,7 +26,7 @@ router.put('/:gunId', async (req, res) => { // Update specific gun
     const gun = await Gun.findById(req.params.gunId);
 
     if (!gun) {
-      return res.status(403).send('You\'re not allowed to do that!');
+      return res.status(403).json({err: 'You\'re not allowed to do that!'});
     }
 
     const updatedGun = await Gun.findByIdAndUpdate(
