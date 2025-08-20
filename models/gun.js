@@ -8,4 +8,4 @@ const gunSchema = mongoose.Schema({
 
 const Gun = mongoose.model('Gun', gunSchema);
 
-export default Gun;
+module.exports = Gun;

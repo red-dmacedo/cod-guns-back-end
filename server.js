@@ -1,4 +1,5 @@
 // ===== Imports =====
+const dotenv = require('dotenv');
 const express = require('express');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
@@ -19,10 +20,10 @@ mongoose.connection.on('connected', () => {
   console.log(`Conncted to MongoDB ${mongoose.connection.name}`);
 });
 
+app.use(cors());
+app.use(express.json());
 app.use(morgan('dev'));
 app.use(methodOverride('_method'));
-app.use(cors({ origin: ['http://127.0.0.1:5173', 'http://localhost:5173'] }));
-app.use(express.json());
 
 // ===== Routes =====
 app.use('/guns', gunRouter);
