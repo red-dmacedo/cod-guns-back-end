@@ -7,7 +7,12 @@ router.get('/', async (req, res) => { // Get all guns
 });
 
 router.post('/', async (req, res) => { // Create a gun
-
+    try {
+    const createdGun = await Gun.create(req.body);
+    res.status(201).json(createdGun);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
+  }
 });
 
 router.put('/:gunId', async (req, res) => { // Update specific gun
